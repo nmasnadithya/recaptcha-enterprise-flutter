@@ -18,12 +18,15 @@ version: 18.6.1
 homepage: https://github.com/GoogleCloudPlatform/recaptcha-enterprise-flutter
 
 environment:
-  sdk: '>=2.16.2 <4.0.0'
+  sdk: '>=3.3.0 <4.0.0'
   flutter: ">=2.5.0"
 
 dependencies:
   flutter:
     sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
+  web: ^0.5.1
   plugin_platform_interface: ^2.0.2
 
 dev_dependencies:
@@ -53,6 +56,9 @@ flutter:
         pluginClass: RecaptchaEnterprisePlugin
       ios:
         pluginClass: RecaptchaEnterprisePlugin
+      web:
+        pluginClass: RecaptchaEnterprisePluginWeb
+        fileName: recaptcha_enterprise_web.dart
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:
