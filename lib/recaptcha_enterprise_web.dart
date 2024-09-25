@@ -48,9 +48,9 @@ class RecaptchaEnterpriseWeb extends RecaptchaEnterprisePlatform {
   }
 
   @override
-  Future<bool> fetchClient(String siteKey) async {
+  Future<bool> fetchClient(String siteKey, {String? badge}) async {
     try {
-      await _maybeLoadLibrary(siteKey);
+      await _maybeLoadLibrary(siteKey, badge: badge);
       await _waitForRecaptchaReady(null);
     } catch (e) {
       return false;
@@ -96,11 +96,11 @@ class RecaptchaEnterpriseWeb extends RecaptchaEnterprisePlatform {
     }
   }
 
-  static Future<void> _maybeLoadLibrary(String siteKey) async {
+  static Future<void> _maybeLoadLibrary(String siteKey, {String? badge}) async {
     final completer = Completer();
     const scriptId = 'recaptcha_enterprise_script';
     final scriptUrl =
-        'https://www.google.com/recaptcha/enterprise.js?render=$siteKey';
+        'https://www.google.com/recaptcha/enterprise.js?render=$siteKey${badge != null ? '&badge=$badge' : ''}';
 
     if (web.document.querySelector('script#$scriptId') != null) {
       return;

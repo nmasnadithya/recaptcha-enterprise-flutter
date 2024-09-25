@@ -27,7 +27,7 @@ class MockRecaptchaEnterprisePlatform
       Future.value(true);
 
   @override
-  Future<bool> fetchClient(String siteKey) => Future.value(true);
+  Future<bool> fetchClient(String siteKey, {String? badge}) => Future.value(true);
 
   @override
   Future<String> execute(String action, {double? timeout}) =>

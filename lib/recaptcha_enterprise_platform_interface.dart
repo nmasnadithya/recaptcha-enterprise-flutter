@@ -46,7 +46,7 @@ abstract class RecaptchaEnterprisePlatform extends PlatformInterface {
     throw UnimplementedError('execute() has not been implemented.');
   }
 
-  Future<bool> fetchClient(String siteKey){
+  Future<bool> fetchClient(String siteKey, {String? badge}){
     throw UnimplementedError('fetchClient() has not been implemented.');
   }
 }

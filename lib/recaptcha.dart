@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import 'package:recaptcha_enterprise_flutter/recaptcha_badge_location.dart';
+
 import 'recaptcha_enterprise_platform_interface.dart';
 import 'recaptcha_client.dart';
 
@@ -19,9 +21,10 @@ import 'recaptcha_client.dart';
 class Recaptcha {
   /// Returns a [RecaptchaClient] associated with the [siteKey] to access all
   /// reCAPTCHA APIs. It uses the fetchClient API that has built-in retries.
-  static Future<RecaptchaClient> fetchClient(String siteKey) async {
+  /// The [badge] parameter is optional and it is used to set the badge location in web
+  static Future<RecaptchaClient> fetchClient(String siteKey, {RecaptchaBadgeLocation? badge}) async {
     return RecaptchaEnterprisePlatform.instance
-        .fetchClient(siteKey)
+        .fetchClient(siteKey, badge: badge?.location)
         .then((_) {
       return RecaptchaClient();
     });
